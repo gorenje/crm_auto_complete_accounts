@@ -21,8 +21,12 @@ You'll need to install the auto_complete plugin:
 Usage
 =====
 
-You'll have to patch the _top_section.html.haml partials for Opportunities
-and Contacts:
+To install this plugin:
+
+  script/plugin install git://github.com/gorenje/crm_auto_complete_accounts.git
+
+After that, you will have to patch the _top_section.html.haml partials 
+for Opportunities and Contacts:
 
   patch -p0 < vendor/plugins/crm_auto_complete_accounts/top_sections.patch
 
