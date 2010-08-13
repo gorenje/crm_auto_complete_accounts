@@ -1,6 +1,8 @@
 AutoCompleteAccounts
 ====================
 
+This is a Fat Free CRM Plugin, see: http://github.com/michaeldv/fat_free_crm
+
 Plugin to replace the selection box for accounts with an auto-complete 
 text field. Having a selection box for accounts becomes a pain when you
 have lost of accounts.
