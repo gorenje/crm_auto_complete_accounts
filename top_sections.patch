@@ -1,0 +1,58 @@
+diff --git app/views/contacts/_top_section.html.haml app/views/contacts/_top_section.html.haml
+index fae00e5..b110dc0 100644
+--- app/views/contacts/_top_section.html.haml
++++ app/views/contacts/_top_section.html.haml
+@@ -24,19 +24,17 @@
+       %tr
+         %td(valign="top")
+           .label
+-            #{t :account}
+-            %span#account_create_title
+-              (#{t :create_new} #{t :or} <a href='#' onclick='crm.select_account(1); return false;'>#{t :select_existing}</a>):
+-            %span#account_select_title
+-              (<a href='#' onclick='crm.create_account(1); return false;'>#{t :create_new}</a> #{t :or} #{t :select_existing}):
+-            %span#account_disabled_title :              
++            #{t :account}:
++            %span#account_create_title= ''
++            %span#account_select_title= ''
++            %span#account_disabled_title= ''
+ 
+           -# Add [-- None --] account choice when editing existing contact that has an account.
+           - options = { :selected => @account.id || 0 }
+           - options[:include_blank] = t(:select_none) unless @contact.new_record? || @contact.account.blank?
+ 
+           = collection_select :account, :id, @accounts, :id, :name, options, { :style => "width:330px; display:none;" }
+-          = a.text_field :name, :style => "width:324px; display:none;"
++          = text_field_with_auto_complete  :account, :name, :style => "width:324px; display:none;"
+         %td= spacer
+         %td(valign="top")
+           .label #{t :assigned_to}:
+diff --git app/views/opportunities/_top_section.html.haml app/views/opportunities/_top_section.html.haml
+index f0b273b..2ce2442 100644
+--- app/views/opportunities/_top_section.html.haml
++++ app/views/opportunities/_top_section.html.haml
+@@ -35,19 +35,17 @@
+       %tr
+         %td(valign="top")
+           .label
+-            #{t :account}
+-            %span#account_create_title
+-              (#{t :create_new} #{t :or} <a href='#' onclick='crm.select_account(1); return false;'>#{t :select_existing}</a>):
+-            %span#account_select_title
+-              (<a href='#' onclick='crm.create_account(1); return false;'>#{t :create_new}</a> #{t :or} #{t :select_existing}):
+-            %span#account_disabled_title :
++            #{t :account}:
++            %span#account_create_title= ''
++            %span#account_select_title= ''
++            %span#account_disabled_title= ''
+ 
+           -# Add [-- None --] account choice when editing existing opportunity that has an account.
+           - options = { :selected => @account.id || 0 }
+           - options[:include_blank] = t(:select_none) unless @opportunity.new_record? || @opportunity.account.blank?
+ 
+           = collection_select :account, :id, @accounts, :id, :name, options, { :style => "width:330px; display:none;" }
+-          = a.text_field :name, :style => "width:324px; display:none;"
++          = text_field_with_auto_complete :account, :name, :style => "width:324px; display:none;"
+         %td= spacer
+         %td(valign="top")
+           .label.req #{t :assigned_to}:

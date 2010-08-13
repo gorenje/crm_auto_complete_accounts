@@ -1,0 +1,41 @@
+AutoCompleteAccounts
+====================
+
+Plugin to replace the selection box for accounts with an auto-complete 
+text field. Having a selection box for accounts becomes a pain when you
+have lost of accounts.
+
+The plugin replaces the retrieval of all accounts for the Contacts and
+Opportunities Controllers. For create, edit and new actions. In addition,
+the _top_section partial is modified to use a text_field_with_auto_complete.
+
+Prerequiste
+===========
+
+You'll need to install the auto_complete plugin:
+
+  script/plugin install git://github.com/rails/auto_complete.git
+
+Usage
+=====
+
+You'll have to patch the _top_section.html.haml partials for Opportunities
+and Contacts:
+
+  patch -p0 < vendor/plugins/crm_auto_complete_accounts/top_sections.patch
+
+After that the accounts input field will be auto completed.
+
+Bugs
+====
+
+No tests. Sorry, this a quick hack that needs to be done better:
+ - need to be able to use hooks to insert the text_field_with_auto_complete
+ - duplication of the controller methods is a pain, better would be to 
+   have a hook for Account retrieval (or something else).
+
+There is also no guarantee that this plugin will keep working with 
+newer versions of Fat Free CRM. I implemented this plugin with a version of
+FatFree that was dated May 5th, 2010.
+
+Copyright (c) 2010 Gerrit Riessen, released under the MIT license
