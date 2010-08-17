@@ -27,6 +27,31 @@ index fae00e5..b110dc0 100644
          %td= spacer
          %td(valign="top")
            .label #{t :assigned_to}:
+diff --git app/views/leads/_convert.html.haml app/views/leads/_convert.html.haml
+index 5a87cd3..5086b52 100644
+--- app/views/leads/_convert.html.haml
++++ app/views/leads/_convert.html.haml
+@@ -12,15 +12,13 @@
+           %tr
+             %td{ :valign => :top }
+               .label.req
+-                #{t :account}
+-                %span#account_create_title
+-                  (#{t :create_new} #{t :or} <a href='#' onclick='crm.select_account(1); return false;'>#{t :select_existing}</a>):
+-                %span#account_select_title
+-                  (<a href='#' onclick='crm.create_account(1); return false;'>#{t :create_new}</a> #{t :or} #{t :select_existing}):
+-                %span#account_disabled_title :
++                #{t :account}:
++                %span#account_create_title= ""
++                %span#account_select_title= ""
++                %span#account_disabled_title= ""
+ 
+               = collection_select :account, :id, @accounts, :id, :name, { :selected => @account.id || 0 }, { :style => "width:330px; display:none;" }
+-              = a.text_field :name, :style => "width:324px; display:none;"
++              = text_field_with_auto_complete :account, :name, :style => "width:324px; display:none;"
+             %td= spacer
+             %td{ :valign => :top }
+               .label.req #{t :assigned_to}:
 diff --git app/views/opportunities/_top_section.html.haml app/views/opportunities/_top_section.html.haml
 index f0b273b..2ce2442 100644
 --- app/views/opportunities/_top_section.html.haml
