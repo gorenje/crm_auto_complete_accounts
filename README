@@ -25,11 +25,6 @@ To install this plugin:
 
   script/plugin install git://github.com/gorenje/crm_auto_complete_accounts.git
 
-After that, you will have to patch the _top_section.html.haml partials 
-for Opportunities and Contacts:
-
-  patch -p0 < vendor/plugins/crm_auto_complete_accounts/top_sections.patch
-
 After that the accounts input field will be auto completed.
 
 Bugs
@@ -40,8 +35,10 @@ No tests. Sorry, this a quick hack that needs to be done better:
  - duplication of the controller methods is a pain, better would be to 
    have a hook for Account retrieval (or something else).
 
+Compatibility
+=============
+
 There is also no guarantee that this plugin will keep working with 
-newer versions of Fat Free CRM. I implemented this plugin with a version of
-FatFree that was dated May 5th, 2010.
+newer versions of Fat Free CRM. It works with Release 0.10.1 (1. Sept 2010).
 
 Copyright (c) 2010 Gerrit Riessen, released under the MIT license
