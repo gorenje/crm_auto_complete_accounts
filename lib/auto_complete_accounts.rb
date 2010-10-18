@@ -1,6 +1,6 @@
 %w(
-aca_models.rb
-aca_contacts_controller.rb
-aca_opportunities_controller.rb
-aca_leads_controller.rb
-).each { |libname| require libname }
+  aca_models
+  aca_contacts_controller
+  aca_opportunities_controller
+  aca_leads_controller
+).each { |a| require File.dirname(__FILE__) + "/#{a}.rb" }
